@@ -21,14 +21,15 @@ export class Doctor {
       // collects website if available
       let website = practice.website || "";
       // collects whether doctor accepts new patients
-      // if (practice.accepts_new_patients === false);
-      let newPatient = practice.accepts_new_patients;
+      let newPatient = "";
+      if (practice.accepts_new_patients === false) {
+        newPatient = "not";
+      };
       $('#output').append(`<p>` +
         `${firstName} ${lastName}<br>` +
         `${street1}, ${street2}<br>` +
         `${city}, ${state} ${zip}<br>` +
-        `${phone}<br>` +
-        `${website}<br>` +
+        `${phone}  ${website}<br>` +
         `This doctor is ${newPatient} accepting new clients.</p><br><br>`
       );
     });

@@ -32,7 +32,7 @@ $(document).ready(function() {
       } else {
         doctor.findDoctor();
       }
-      console.log(JSON.stringify(data, null, '\t'));
+      // console.log(JSON.stringify(data, null, '\t'));
     });
 
 
