@@ -26,7 +26,7 @@ _Run in preferred browser._
 
 ## Known Bugs
 
-*   No known bugs at this time; however, this is a work in progress.
+*   The API at BetterDoctor.com will include search results for "last_name" that do not actually include a specific doctor. It is assumed that the search term is included in the name of the practice.
 
 ## Support and contact details
 
