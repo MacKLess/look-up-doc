@@ -25,13 +25,13 @@ $(document).ready(function() {
 
     promise.then(function(response) {
       let data = JSON.parse(response);
+      let doctor = new Doctor(data);
       $('#output').text("");
       if (data.data.length === 0) {
         $('#output').append(`<p>Sorry. There are no entries that match your criteria.</p>`);
+      } else {
+        doctor.findDoctor();
       }
-      data.data.forEach(function(item) {
-        $('#output').append(`<p> ${JSON.stringify(item)}</p>`);
-      });
       console.log(JSON.stringify(data, null, '\t'));
     });
 
