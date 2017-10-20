@@ -1,29 +1,33 @@
 import { Doctor } from './../js/doctor.js';
 let apiKey = require('./../.env').apiKey;
 
+
 $(document).ready(function() {
-  $('#doc-search').click(function(event) {
+  $('#doc-search').submit(function(event) {
     event.preventDefault;
-    let doc = $('#doc').val();
-    $('#doc').val("");
+    let issue = $('#issue').val();
+    let doc = $('#name').val();
+    $('#issue').val("");
+    $('#name').val("");
 
-    let request = new XMLHttpRequest();
-    // this url has a name paramater "mary" for
-    let url = `https://api.betterdoctor.com/2016-03-01/doctors?name=mary&location=37.773%2C-122.413%2C100&user_location=37.773%2C-122.413&fields=profile(first_name%2Clast_name)%2Cpractices(visit_address%2Cphones%2Cwebsite%2Caccepts_new_patients)&skip=0&limit=10&user_key=d63cf5a06be51254d9f4e0e7deff7b36`;
+    let promise = new Promise(function(resolve, reject) {
+      let request = new XMLHttpRequest();
+      // this url has a name paramater "mary" for
+      let url = `https://api.betterdoctor.com/2016-03-01/doctors?name=${doc}&location=47.608%2C-122.335%2C100&user_location=47.608%2C-122.335&sort=full-name-asc&fields=profile(first_name%2Clast_name)%2Cpractices(visit_address%2Cphones%2Cwebsite%2Caccepts_new_patients)&skip=0&limit=10&user_key=d63cf5a06be51254d9f4e0e7deff7b36`;
+        request.onload = function() {
+          if (this.status === 200) {
+            resolve(request.response);
+          } else {
+            reject(Error(request.statusText));
+          }
+        };
+        request.open("GET", url, true);
+        request.send();
+    });
 
-      request.onreadystatechange = function() {
-        if (this.readyState === 4 && this.status === 200) {
-          let response = JSON.parse(this.responseText);
-          getElements(response);
-        }
-      }
-
-      request.open("GET", url, true);
-      request.send();
-
-      getELements = function(response) {
-        console.log(JSON.stringify(response));
-      }
-
+    promise.then(function(response) {
+      let data = JSON.parse(response);
+      console.log(JSON.stringify(data));
+    });
   });
 });
