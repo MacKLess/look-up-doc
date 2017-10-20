@@ -27,7 +27,7 @@ $(document).ready(function() {
 
     promise.then(function(response) {
       let data = JSON.parse(response);
-      console.log(JSON.stringify(data));
+      console.log(JSON.stringify(data, null, '\t'));
     });
   });
 });
