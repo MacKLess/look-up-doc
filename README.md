@@ -22,7 +22,7 @@ _Run in preferred browser._
 * _User will search the database by entering a name in the textbox and get a list of doctors in the Seattle area._
 * _If the query returns any doctors, the following info should be included: first name, last name, address, phone number, website, and whether the doctor is accepting new patients._
 * _Non 200 OK responses (errors) should return with error message and information about type of error._
-* _If no doctors meet the searh criteria, a error message should be returned: "Sorry, there aren't any doctors who fit what you are seeking."_
+* _If no doctors meet the search criteria, a error message should be returned: "Sorry, there aren't any doctors who fit what you are seeking."_
 
 ## Known Bugs
 
