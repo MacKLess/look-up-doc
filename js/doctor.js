@@ -35,22 +35,4 @@ export class Doctor {
     });
   };
 
-    //   $('#output').append(`<p> ${JSON.stringify(item)}</p>`);
-    // });
-    //loops through each practice to get address
-
-
-  showData(data) {
-    $('.showName').text(`${data.first_name} + ${data.last_name}`);
-    $('.showAddress1').text(`${data.street}, ${data.street2}`);
-    $('.showAddress2').text(`${data.state} + ${data.city} + ${data.zip}`);
-    $('.phone').text(`${data.phones}`);//should this be an array?
-    $('.website').text(`${data.website}`);
-    $('.newPatient').text(`This doctor is ${data.new} accepting new clients.`); // this needs to be an if else statement based on whether the value of the key pair "accepts_new_patients" is true or false.
-  }
-
-
-
-
-
 }

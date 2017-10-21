@@ -23,7 +23,7 @@ $(document).ready(function() {
           if (this.status === 200) {
             resolve(request.response);
           } else {
-            reject(Error(request.statusText));
+            reject(Error(request.statusText)); //I think I still need to build this out for 400 and 401 status codes but I can't make it error.
           }
         };
         request.open("GET", url, true);

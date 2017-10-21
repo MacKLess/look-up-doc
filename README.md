@@ -6,7 +6,7 @@
 
 ## Description
 
-_An app that allows the user to search for a doctor based on medical condition (example: sore throat) or by name._
+_An app that allows the user to search for a doctor based on medical condition (example: sore throat) or by name. This app will return the first 10 doctors who fulfill the criteria by ascending first name._
 
 ## Setup/Installation Requirements
 
