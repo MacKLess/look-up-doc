@@ -5,13 +5,20 @@ $(document).ready(function() {
   $('#doc-search').submit(function(event) {
     event.preventDefault();
     let issue = $('#issue').val();
-    let doc = $('#name').val();
+    let name = $('#name').val();
+    let change = "";
     $('#issue').val("");
     $('#name').val("");
 
     let promise = new Promise(function(resolve, reject) {
       let request = new XMLHttpRequest();
-      let url = `https://api.betterdoctor.com/2016-03-01/doctors?last_name=${doc}&location=47.608%2C-122.335%2C100&user_location=47.608%2C-122.335&sort=full-name-asc&fields=profile(first_name%2Clast_name)%2Cpractices(visit_address%2Cphones%2Cwebsite%2Caccepts_new_patients)&skip=0&limit=10&user_key=d63cf5a06be51254d9f4e0e7deff7b36`;
+      if (issue !== "") {
+        change = `query=${issue}&`
+      }
+      if (name !== "") {
+        change = `last_name=${name}&`
+      }
+      let url = `https://api.betterdoctor.com/2016-03-01/doctors?${change}location=47.608%2C-122.335%2C100&user_location=47.608%2C-122.335&sort=full-name-asc&fields=profile(first_name%2Clast_name)%2Cpractices(visit_address%2Cphones%2Cwebsite%2Caccepts_new_patients)&skip=0&limit=10&user_key=d63cf5a06be51254d9f4e0e7deff7b36`;
         request.onload = function() {
           if (this.status === 200) {
             resolve(request.response);
